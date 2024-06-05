@@ -64,6 +64,8 @@ public class Deque<Item> implements Iterable<Item>{
 
     // Remove and return the item from the front
     public Item removeFirst(){
+        removeNull();
+
         Item item = front.item;
         front = front.next;
         
@@ -76,6 +78,8 @@ public class Deque<Item> implements Iterable<Item>{
 
     // Remove and return the item from the back
     public Item removeLast(){
+        removeNull();
+        
         Item item = back.item;
         back = back.previous;
 
@@ -91,12 +95,16 @@ public class Deque<Item> implements Iterable<Item>{
         return null;
     }
 
+    private void validateItem(Item item){
+        if (item == null) throw new IllegalArgumentException("The item cannot be null, please provide a valid item.");
+    }
+
+    private void removeNull(){
+        if(isEmpty()) throw new java.util.NoSuchElementException("There are no elements to be removed in the deque.");
+    }
+
     // Testing unit
     public static void main(String[] args){
 
-    }
-
-    private void validateItem(Item item){
-        if (item == null) throw new IllegalArgumentException("The item cannot be null, please provide a valid item.");
     }
 }
