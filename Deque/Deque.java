@@ -79,7 +79,7 @@ public class Deque<Item> implements Iterable<Item>{
     // Remove and return the item from the back
     public Item removeLast(){
         removeNull();
-        
+
         Item item = back.item;
         back = back.previous;
 
@@ -91,9 +91,26 @@ public class Deque<Item> implements Iterable<Item>{
     }
 
     // Return an iterator over items in order from front to back
-    public Iterator<Item> iterator(){
-        return null;
+    public Iterator<Item> iterator() { return new DequeIterator(); }
+
+    private class DequeIterator implements Iterator<Item>{
+        private Node current = front;
+
+        public boolean hasNext() { return current != null; }
+
+        public Item next(){
+            if(current.next == null) throw new java.util.NoSuchElementException("There are no more elements in the deque to be iterated.");
+            
+            Item item = current.item;
+            current = current.next;
+            return item;
+        }
+
+        public void remove(){
+            throw new UnsupportedOperationException("Operation not supported.");
+        }
     }
+
 
     private void validateItem(Item item){
         if (item == null) throw new IllegalArgumentException("The item cannot be null, please provide a valid item.");
