@@ -2,6 +2,8 @@ package Deque;
 
 import java.util.Iterator;
 
+import edu.princeton.cs.algs4.StdIn;
+
 public class Deque<Item> implements Iterable<Item>{
     private Node front, back;
     private int N;
@@ -122,6 +124,61 @@ public class Deque<Item> implements Iterable<Item>{
 
     // Testing unit
     public static void main(String[] args){
+        System.out.println("Welcome to the unit test!");
+        System.out.println("\nCreating new deque of strings...");
+        Deque<String> deck = new Deque<String>();
 
+        System.out.println("\nIs the deque empty?: " + deck.isEmpty());
+        System.out.println("Let's populate it, shall we?");
+
+        for(int i = 0; i <= 5; i++){
+            System.out.println("\nIngress string to be added at the front of the deque: ");
+            deck.addFirst(StdIn.readString());
+            System.out.println("\nElement successfully added!!!");
+            System.out.println("\nDeque size: " + deck.size());
+        }
+
+        System.out.println("\nCurrent state of the deque: ");
+        
+        for(String s: deck){
+            System.out.println(s + ", ");
+        }
+
+        for(int i = 0; i <= 5; i++){
+            System.out.println("\nIngress string to be added at the back of the deque: ");
+            deck.addLast(StdIn.readString());
+            System.out.println("\nElement successfully added!!!");
+            System.out.println("\nDeque size: " + deck.size());
+        }
+
+        System.out.println("\nCurrent state of the deque: ");
+        
+        for(String s: deck){
+            System.out.println(s + ", ");
+        }
+
+        System.out.println("\nStarting to remove items from the back of the deque...");
+
+        for(int i=0; i <=5; i++){
+            System.out.println("\nRemoving item from the back...");
+            deck.removeLast();
+            System.out.println("Current size: " + deck.size());
+        }
+
+        System.out.println("\nCurrent state of the deque: ");
+        
+        for(String s: deck){
+            System.out.println(s + ", ");
+        }
+
+        System.out.println("\nStarting to remove items from the front of the deque...");
+
+        for(int i=0; i <=5; i++){
+            System.out.println("\nRemoving item from the front...");
+            deck.removeFirst();
+            System.out.println("Current size: " + deck.size());
+        }
+
+        System.out.println("\nIs the deque empty?: " + deck.isEmpty());
     }
 }
