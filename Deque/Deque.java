@@ -42,7 +42,7 @@ public class Deque<Item> implements Iterable<Item>{
         front.next = oldFront;
         front.previous = null;
 
-        if(isEmpty()) front = back;
+        if(isEmpty()) back = front;
         else oldFront.previous = front;
 
         N++;
@@ -58,7 +58,7 @@ public class Deque<Item> implements Iterable<Item>{
         back.next = null;
         back.previous = oldBack;
 
-        if(isEmpty()) back = front;
+        if(isEmpty()) front = back;
         else oldBack.next = back;
 
         N++;
@@ -101,7 +101,7 @@ public class Deque<Item> implements Iterable<Item>{
         public boolean hasNext() { return current != null; }
 
         public Item next(){
-            if(current.next == null) throw new java.util.NoSuchElementException("There are no more elements in the deque to be iterated.");
+            if(!hasNext()) throw new java.util.NoSuchElementException("There are no more elements in the deque to be iterated.");
             
             Item item = current.item;
             current = current.next;
@@ -141,7 +141,7 @@ public class Deque<Item> implements Iterable<Item>{
         System.out.println("\nCurrent state of the deque: ");
         
         for(String s: deck){
-            System.out.println(s + ", ");
+            System.out.print(s + ", ");
         }
 
         for(int i = 0; i <= 5; i++){
@@ -154,7 +154,7 @@ public class Deque<Item> implements Iterable<Item>{
         System.out.println("\nCurrent state of the deque: ");
         
         for(String s: deck){
-            System.out.println(s + ", ");
+            System.out.print(s + ", ");
         }
 
         System.out.println("\nStarting to remove items from the back of the deque...");
@@ -168,7 +168,7 @@ public class Deque<Item> implements Iterable<Item>{
         System.out.println("\nCurrent state of the deque: ");
         
         for(String s: deck){
-            System.out.println(s + ", ");
+            System.out.print(s + ", ");
         }
 
         System.out.println("\nStarting to remove items from the front of the deque...");
