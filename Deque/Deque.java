@@ -1,5 +1,7 @@
 package Deque;
 
+import java.util.Iterator;
+
 public class Deque<Item> implements Iterable<Item>{
     Node front, back;
     int N;
@@ -26,12 +28,12 @@ public class Deque<Item> implements Iterable<Item>{
     public void addFirst(Item item){
         Node oldFront = this.front;
         this.front = new Node();
-        front.item = item;
-        front.next = oldFront;
+        this.front.item = item;
+        this.front.next = oldFront;
     }
 
     public void addLast(Item item){
-        Node oldlast = last;
+        Node oldBack = this.back;
     }
 
     public Item removeFirst(){
