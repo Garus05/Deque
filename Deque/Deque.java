@@ -32,6 +32,8 @@ public class Deque<Item> implements Iterable<Item>{
 
     // Add the item to the front
     public void addFirst(Item item){
+        validateItem(item);
+
         Node oldFront = front;
         front = new Node();
         front.item = item;
@@ -46,6 +48,8 @@ public class Deque<Item> implements Iterable<Item>{
 
     // Add the item to the back
     public void addLast(Item item){
+        validateItem(item);
+
         Node oldBack = this.back;
         back = new Node();
         back.item = item;
@@ -90,5 +94,9 @@ public class Deque<Item> implements Iterable<Item>{
     // Testing unit
     public static void main(String[] args){
 
+    }
+
+    private void validateItem(Item item){
+        if (item == null) throw new IllegalArgumentException("The item cannot be null, please provide a valid item.");
     }
 }
