@@ -36,6 +36,12 @@ public class Deque<Item> implements Iterable<Item>{
         front = new Node();
         front.item = item;
         front.next = oldFront;
+        front.previous = null;
+
+        if(isEmpty()) front = back;
+        else oldFront.previous = front;
+
+        N++;
     }
 
     // Add the item to the back
