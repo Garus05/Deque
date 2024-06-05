@@ -3,12 +3,13 @@ package Deque;
 import java.util.Iterator;
 
 public class Deque<Item> implements Iterable<Item>{
-    Node front, back;
-    int N;
+    private Node front, back;
+    private int N;
 
     private class Node {
         Item item;
         Node next;
+        Node previous;
     }
     
     public Deque(){
