@@ -70,11 +70,11 @@ public class Deque<Item> implements Iterable<Item>{
 
         Item item = front.item;
         front = front.next;
+        N--;
         
         if(isEmpty()) back = null;
         else front.previous = null;
 
-        N--;
         return item;
     }
 
@@ -84,11 +84,11 @@ public class Deque<Item> implements Iterable<Item>{
 
         Item item = back.item;
         back = back.previous;
+        N--;
 
         if(isEmpty()) front = null;
         else back.next = null;
         
-        N--;
         return item;
     }
 
