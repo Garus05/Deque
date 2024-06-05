@@ -60,12 +60,26 @@ public class Deque<Item> implements Iterable<Item>{
 
     // Remove and return the item from the front
     public Item removeFirst(){
-        return null;
+        Item item = front.item;
+        front = front.next;
+        
+        if(isEmpty()) back = null;
+        else front.previous = null;
+
+        N--;
+        return item;
     }
 
     // Remove and return the item from the back
     public Item removeLast(){
-        return null;
+        Item item = back.item;
+        back = back.previous;
+
+        if(isEmpty()) front = null;
+        else back.next = null;
+        
+        N--;
+        return item;
     }
 
     // Return an iterator over items in order from front to back
